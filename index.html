@@ -1,6 +1,25 @@
 <html>
   <head>
     <title>trinhlcn tester</title>
+    <!-- CDP Web Insight script -->
+<script type = "text/javascript" >
+   var _portalId = "564889466"; // Portal QC name 04 
+   var _propId = "556301060"; // http://ttesteventsource.com 
+(function() {
+    var w = window;
+    if (w.web_event) return;
+    var a = window.web_event = function() {
+        a.queue.push(arguments);
+    }
+    a.propId = _propId;
+    a.track = a;
+    a.queue = [];
+    var e = document.createElement("script");
+    e.type = "text/javascript", e.async = !0, e.src = "//sandbox-st-a.cdp.asia/insight.js";
+    var t = document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(e, t)
+})(); </script>
+<!-- End of CDP Web Insight script -->
   </head>
   <body>
     <h2>HTML</h2>
