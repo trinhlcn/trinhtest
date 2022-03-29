@@ -11,6 +11,25 @@
 
     <title>Website T test</title>
 
+    <!-- CDP Web Insight script -->
+<script type = "text/javascript" >
+   var _portalId = "33167"; // Portal ANTSOMI Shopping 
+   var _propId = "556301365"; // https://trinhlcn.github.io/trinhtest/ecommercetest/slidein.html 
+(function() {
+    var w = window;
+    if (w.web_event) return;
+    var a = window.web_event = function() {
+        a.queue.push(arguments);
+    }
+    a.propId = _propId;
+    a.track = a;
+    a.queue = [];
+    var e = document.createElement("script");
+    e.type = "text/javascript", e.async = !0, e.src = "//sandbox-st-a.cdp.asia/insight.js";
+    var t = document.getElementsByTagName("script")[0];
+    t.parentNode.insertBefore(e, t)
+})(); </script>
+<!-- End of CDP Web Insight script -->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
@@ -34,6 +53,10 @@ https://templatemo.com/tm-571-hexashop
     
     <body>
 
+      <!-- start block -->
+<div id="cdp_470101" data-cdp-cp-id="470101" ></div>
+<!-- end block -->
+      
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
