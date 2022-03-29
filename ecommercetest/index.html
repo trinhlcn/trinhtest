@@ -10,7 +10,26 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <title>Website T test</title>
-
+    
+    <!-- CDP Web Insight script -->
+    <script type = "text/javascript" >
+       var _portalId = "33167"; // Portal ANTSOMI Shopping 
+       var _propId = "556301356"; // https://trinhlcn.github.io/trinhtest/ecommercetest/ 
+    (function() {
+        var w = window;
+        if (w.web_event) return;
+        var a = window.web_event = function() {
+            a.queue.push(arguments);
+        }
+        a.propId = _propId;
+        a.track = a;
+        a.queue = [];
+        var e = document.createElement("script");
+        e.type = "text/javascript", e.async = !0, e.src = "//sandbox-st-a.cdp.asia/insight.js";
+        var t = document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e, t)
+    })(); </script>
+    <!-- End of CDP Web Insight script -->      
 
 
     <!-- Additional CSS Files -->
@@ -47,6 +66,10 @@ https://templatemo.com/tm-571-hexashop
     
     <body>
 
+    <!-- start block -->
+    <div id="cdp_469205" data-cdp-cp-id="469205" ></div>
+    <!-- end block -->
+      
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
@@ -865,25 +888,7 @@ https://templatemo.com/tm-571-hexashop
     <!-- Global Init -->
     <script src="assets/js/custom.js"></script>
     
-    <!-- CDP Web Insight script -->
-    <script type = "text/javascript" >
-       var _portalId = "33167"; // Portal ANTSOMI Shopping 
-       var _propId = "556301356"; // https://trinhlcn.github.io/trinhtest/ecommercetest/ 
-    (function() {
-        var w = window;
-        if (w.web_event) return;
-        var a = window.web_event = function() {
-            a.queue.push(arguments);
-        }
-        a.propId = _propId;
-        a.track = a;
-        a.queue = [];
-        var e = document.createElement("script");
-        e.type = "text/javascript", e.async = !0, e.src = "//sandbox-st-a.cdp.asia/insight.js";
-        var t = document.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(e, t)
-    })(); </script>
-    <!-- End of CDP Web Insight script -->        
+      
       
     <script>
 
