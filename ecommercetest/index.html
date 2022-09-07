@@ -66,8 +66,6 @@ https://templatemo.com/tm-571-hexashop
     <body>
       
     <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
         apiKey: "AIzaSyDQsvFe8enUcw3TB0EWxhhpH5Rxj2g4hx0",
         authDomain: "t-test-b0c6f.firebaseapp.com",
@@ -81,18 +79,18 @@ https://templatemo.com/tm-571-hexashop
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       const messaging = firebase.messaging()
-      navigator.serviceWorker.register('https://trinhlcn.github.io/trinhtest/ecommercetest/firebase-messaging-sw.js')
-      .then((register) => {
-        messaging.requestPermission().then(() => {
-          messaging.getToken()
-          .then((fcmToken) => {
-            console.log(fcmToken)
-            messaging.onMessage((payload) => {
-              console.log("onMessage event fired",payload)
-            })
+      navigator.serviceWorker.register('firebase-messaging-sw.js')
+        .then((register) => {
+          messaging.requestPermission().then(() => {
+            messaging.getToken()
+            .then((fcmToken) => {
+              console.log(fcmToken)
+              messaging.onMessage((payload) => {
+                console.log("onMessage event fired",payload)
+              })
+            });
           });
-        });
-      })
+        })
     </script>
       
     <!-- ***** Header Area Start ***** -->
