@@ -58,17 +58,15 @@ https://templatemo.com/tm-571-hexashop
     </head>
     
     <body>
-      <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js";
-      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js";
-      import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/9.9.4/firebase-messaging.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-    
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.9.4/firebase-messaging.js"></script>
+    <script>
       // Your web app's Firebase configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
+      var firebaseConfig = {
         apiKey: "AIzaSyDQsvFe8enUcw3TB0EWxhhpH5Rxj2g4hx0",
         authDomain: "t-test-b0c6f.firebaseapp.com",
         projectId: "t-test-b0c6f",
@@ -77,74 +75,22 @@ https://templatemo.com/tm-571-hexashop
         appId: "1:933347335505:web:d58c7438fcc3bbb8f44770",
         measurementId: "G-DSPXJ9XZ15"
       };
-    
       // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const analytics = getAnalytics(app);
-      
-      const messaging = getMessaging(app);
-      
-      //Custom function made to run firebase service 
-      getStartToken();
-      //This code recieve message from server /your app and print message to console if same tab is opened as of project in browser 
-      onMessage(function(payload){
-      console.log("on Message",payload);
-      });
-
-      function getStartToken(){
-        getToken(messaging, { vapidKey: "BNCapWGUWGWh_EUuysRlO1Ra9fSSegYNRWXLzhvzlxHpNfL4fxn4rzSw6z21J1nzNnZvdkjVRmMcqWEwAtPzsE8" }).then((currentToken) => {
-          if (currentToken) {
-            console.log('client_token',currentToken)
-          } else {
-            // Show permission request UI
-            console.log('No registration token available. Request permission to generate one.');
-    
-          }
-        }).catch((err) => {
-          console.log('An error occurred while retrieving token. ', err);
-    
-        });
-        }
-      function RequestPermission(){
-        messaging.requestPermission()
-        .then(function(permission){
-        if (permission === 'granted') {
-          console.log("have Permission");
-          //calls method again and to sent token to server
-          getStartToken();
-         }
-         else{
-           console.log("Permission Denied");
-         }
-        }).catch(function(err){
-        console.log(err);
-        })
-              
-      }
-      function sendTokenToServer(token){ 
-        if (!isTokensendTokenToServer()) {
-          $.ajax({
-            url: URL,
-            type: 'POST',
-            data: {
-              //whatever you wanna send
-              push_token:token,
-            },
-            success: function (response) {
-              setTokenSentToServer(true);
-            },
-            error: function (err) {
-              setTokenSentToServer(false);
-            },
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const messaging = firebase.messaging()
+      navigator.serviceWorker.register('firebase-messaging-sw.js')
+      .then((register) => {
+        messaging.requestPermission().then(() => {
+          messaging.getToken()
+          .then((fcmToken) => {
+            console.log(fcmToken)
+            messaging.onMessage((payload) => {
+              console.log("onMessage event fired",payload)
+            })
           });
-      }}
-      function isTokensendTokenToServer() {
-        return window.localStorage.getItem('sendTokenToServer') === '1';
-      }
-      function setTokenSentToServer(sent) {
-        window.localStorage.setItem('sendTokenToServer', sent ? '1' : '0');
-      }
-      
+        });
+      })
     </script>
       
     <!-- ***** Header Area Start ***** -->
