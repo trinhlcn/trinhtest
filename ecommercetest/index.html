@@ -16,13 +16,6 @@
        var _portalId = "33167"; // Portal ANTSOMI Shopping 
        var _propId = "556301356"; // https://trinhlcn.github.io/trinhtest/ecommercetest/ 
        var _ATM_TRACKING_ASSOCIATE_UTM = 1;
-      
-        //dims: {customers: customerInfo}
-        var ic = ["test","array","string","event"];
-        extra: {
-             "interest_cate": ic
-         }
-      
     (function() {
         var w = window;
         if (w.web_event) return;
@@ -39,6 +32,30 @@
         
     })(); </script>
     <!-- End of CDP Web Insight script -->
+    
+    <!-- bắn event viewpage -->
+    <script type="text/javascript">  
+     var _cdp365Analytics = {
+	    //dims: { users: { ga_uid: "GA UID VALUE", "source": "Gen 2 Website" }}
+        var ic = ["test","array","string","event"];
+        extra: {
+             "interest_cate": ic
+         }
+     };
+
+      var _cdp365PageviewTracking = function(){
+        var referrerUrl = '';
+        var timer = setInterval(function(){
+          var currentUrl = window.location.href;
+          if(currentUrl != referrerUrl){
+            web_event.track('pageview','view', {custom_event:1});
+            referrerUrl = currentUrl;
+          }
+        }, 500);
+      };
+      _cdp365PageviewTracking();
+    </script>
+
     
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
