@@ -1,5 +1,1 @@
-<html>
-
 importScripts('https://st-a.cdp.asia/antsomiSDKsw.js');
-
-</html>
